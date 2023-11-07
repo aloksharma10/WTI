@@ -6,6 +6,7 @@ const createclient = async (req, res) => {
     res.json({
       message: "Client Created Successfully",
       data: client,
+      status: 200,
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -25,13 +26,15 @@ const getclient = async (req, res) => {
 };
 
 const updateclient = async (req, res) => {
-  const { id, update } = req.body;
+  const body = req.body;
+  console.log(body)
   try {
-    const client = await ClientSchema.findByIdAndUpdate(id, update);
+    const client = await ClientSchema.findByIdAndUpdate(body._id, body);
     if (client) {
       res.json({
         message: "Client updated Successfully",
         data: client,
+        status: 200,
       });
     } else {
       res.status(404).json({ message: "Client not found" });
@@ -49,6 +52,7 @@ const deleteclient = async (req, res) => {
       res.json({
         message: "Client removed Successfully",
         data: client,
+        status: 200,
       });
     } else {
       res.status(404).json({ message: "Client not found" });
