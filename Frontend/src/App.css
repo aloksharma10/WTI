@@ -1,0 +1,15 @@
+
+.custom-flex{
+  display: flex;
+}
+.mob-width{
+  width: 35%;
+}
+@media screen and (max-width: 768px) {
+  .custom-flex{
+    display: block;
+  }
+  .mob-width{
+    width: 100%;
+  }
+}
